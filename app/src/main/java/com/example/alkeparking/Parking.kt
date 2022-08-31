@@ -53,7 +53,7 @@ data class Parking(
         if (!flag) onError()
     }
 
-        if (vehicles.contains(vehicle)) {
+    /*    if (vehicles.contains(vehicle)) {
             vehicles.remove(vehicle)
             vehiclesRetired.add(vehicle)
             val parkingSpace = ParkingSpace(vehicle, Calendar.getInstance().timeInMillis)
@@ -61,8 +61,8 @@ data class Parking(
             val totalEarnings = vehiclesRetiresAndEarnings.first + parkingSpace.calculateFee()
             val carsRetired = vehiclesRetiresAndEarnings.second + 1
             vehiclesRetiresAndEarnings = Pair(totalEarnings, carsRetired)
-        } else onError()
-    }
+        } else onError() */
+
 
     fun showEarnings(){
         println("${vehiclesRetiresAndEarnings.second} Vehicles have checked out and have earnings of $${vehiclesRetiresAndEarnings.first}")

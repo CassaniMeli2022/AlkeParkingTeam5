@@ -36,8 +36,8 @@ fun main() {
     val funOnError = {println("Sorry, the Check Out Failed")}
 
     //removing vehicles
-    parking.checkOutVehicle(parking.vehicles.random(), funOnSucces, funOnError)
-    parking.checkOutVehicle(parking.vehicles.random(), funOnSucces, funOnError)
+  //  parking.checkOutVehicle(parking.vehicles.random(), funOnSucces, funOnError)
+  //  parking.checkOutVehicle(parking.vehicles.random(), funOnSucces, funOnError)
 
     //trying to remove a Vehicle which already has been removed
 
