@@ -5,4 +5,5 @@ enum class VehicleType (val fee: Int) {
     CAR (20),
     BUS (30),
     MINIBUS (25)
+    
 }

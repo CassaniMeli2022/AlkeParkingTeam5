@@ -16,6 +16,7 @@ data class Vehicle(
     }
 
     override fun hashCode(): Int = this.plate.hashCode()
+
 }
 
 //

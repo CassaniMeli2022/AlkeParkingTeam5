@@ -1,23 +1,19 @@
 package com.example.alkeparking
 
-import java.util.*
 
 data class ParkingSpace(
     var vehicle: Vehicle,
     var parkedTime: Long,
 ){
-    fun calculateFee () : Int{
-        var profit : Int = 0
-        when(parkedTime as IntRange){
-            1..2 -> vehicle.Type.fee
-            
-        }
-        if (vehicle.discountCard != null) {
-            profit = (((parkedTime - vehicle.checkInTime) * vehicle.Type.fee) * 0.85).toInt()
-        } else profit = ((parkedTime - vehicle.checkInTime) * vehicle.Type.fee).toInt()
-
+    fun calculateFee() : Int{
+        var baseProfit: Int = 0
+        var profit: Int = 0
+        baseProfit = if(parkedTime <= 2){
+            parkedTime.toInt() * vehicle.Type.fee
+        }else (2 * vehicle.Type.fee) + (((parkedTime.toInt() - 2) * 20) + vehicle.Type.fee * 2)
+        profit = if(vehicle.discountCard != null){
+            (baseProfit * 0.85).toInt()
+        }else baseProfit
         return profit
     }
 }
-
-
