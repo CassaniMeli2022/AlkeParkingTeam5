@@ -6,7 +6,7 @@ data class Vehicle(
     val plate: String,
     val Type: VehicleType,
     var checkInTime: Long = Calendar.getInstance().timeInMillis,
-    var discountCard: Boolean? = null
+    var discountCard: String? = null
 ) {
     override fun equals(other: Any?): Boolean {
         if (other is Vehicle) {

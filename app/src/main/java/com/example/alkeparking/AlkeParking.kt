@@ -6,11 +6,12 @@ fun main() {
 
     val parking = Parking(mutableSetOf())
 
-    checkInVehicle("AA111AA", VehicleType.CAR, Calendar.getInstance().timeInMillis, parking, true)
-    checkInVehicle("AA111AA", VehicleType.CAR, Calendar.getInstance().timeInMillis, parking, true)
+    checkInVehicle("AA111AA", VehicleType.CAR, Calendar.getInstance().timeInMillis, parking, "card001")
+    checkInVehicle("AA111AA", VehicleType.CAR, Calendar.getInstance().timeInMillis, parking, "card002")
     checkInVehicle("AA111BB", VehicleType.MOTO, Calendar.getInstance().timeInMillis, parking)
-    checkInVehicle("AA111DD", VehicleType.BUS, Calendar.getInstance().timeInMillis, parking, true)
+    checkInVehicle("AA111DD", VehicleType.BUS, Calendar.getInstance().timeInMillis, parking, "card003")
     checkInVehicle("AAZZZ234A", VehicleType.MINIBUS, Calendar.getInstance().timeInMillis, parking)
+
 
 }
 
@@ -19,7 +20,7 @@ fun checkInVehicle(
     type: VehicleType,
     checkInTime: Long,
     parking: Parking,
-    discountCard: Boolean? = null,
+    discountCard: String? = null,
 ) {
     val vehicle = Vehicle(plate, type, checkInTime, discountCard)
     if (!parking.vehicles.contains(vehicle)) {
@@ -34,14 +35,10 @@ fun checkOutVehicle(
 ) {
     if (parking.vehicles.contains(vehicle)) {
         parking.vehicles.remove(vehicle)
-        var profit: Long
-        if (vehicle.discountCard == true) {
-            profit =
-                (((Calendar.getInstance().timeInMillis - vehicle.checkInTime) * vehicle.Type.fee) * 0.85).toLong()
-        } else profit =
-            (Calendar.getInstance().timeInMillis - vehicle.checkInTime) * vehicle.Type.fee
-        println("el vehiculo patente: ${vehicle.plate} fue retirado y se cobro $profit")
-
+        val parkingSpace = ParkingSpace(vehicle, Calendar.getInstance().timeInMillis)
+        println("el vehiculo patente: ${vehicle.plate} fue retirado y se cobro ${parkingSpace.calculateFee()}")
     } else println("el vehiculo no estuvo en el estacionamiento")
 }
+
+
 
