@@ -14,6 +14,6 @@ data class ParkingSpace(
         profit = if(vehicle.discountCard != null){
             (baseProfit * 0.85).toInt()
         }else baseProfit
-        return profit
+        return profit / 1000000
     }
 }
