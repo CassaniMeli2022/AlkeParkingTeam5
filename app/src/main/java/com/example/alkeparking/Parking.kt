@@ -4,8 +4,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 data class Parking(
-    val vehicles: MutableSet<Vehicle>,
-    val vehiclesRetired: ArrayList<Vehicle>,
+    var vehicles: MutableSet<Vehicle>,
+    var vehiclesRetired: ArrayList<Vehicle>,
     val slots: Int,
 ){
     private var vehiclesRetiresAndEarnings: Pair<Int, Int> = Pair(0,0)
