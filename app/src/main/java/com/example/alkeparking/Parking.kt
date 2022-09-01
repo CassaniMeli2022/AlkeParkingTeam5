@@ -28,7 +28,7 @@ data class Parking(
                 false
             }
         }else {
-            println("Sorry, Check In of Vehicle plate #$plate has Failed, this car is already parked")
+            println("Sorry, Check In of Vehicle plate #$plate has Failed, this vehicle is already parked")
             false
         }
 
@@ -36,7 +36,7 @@ data class Parking(
 
     fun checkOutVehicle(plate: String, onSuccess: (Int, String) -> Unit, onError: () -> Unit) {
 
-        var vehicle = Vehicle("vehicleNotExists", VehicleType.CAR, Calendar.getInstance().timeInMillis, "asdaasdasd")
+        var vehicle = Vehicle("vehicleNotExists", VehicleType.CAR, 0, "asdaasdasd")
         for (item in vehicles) {
             if (item.plate == plate) {
                 vehicle = item

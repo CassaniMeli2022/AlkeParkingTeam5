@@ -8,7 +8,7 @@ fun main() {
 
     println("\n ADDING VEHICLES ------------------------- \n")
 
-    // add 20 vehicles
+    // add 20 vehicles and set a random number card
     for(i in 0..parking.slots){
         var card:String? = null
         if(i.mod(2) == 0){
