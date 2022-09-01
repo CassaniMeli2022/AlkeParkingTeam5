@@ -46,9 +46,10 @@ data class Parking(
         if (vehicles.contains(vehicle)) {
             vehicles.remove(vehicle)
             vehiclesRetired.add(vehicle)
-            val parkingSpace = ParkingSpace(vehicle, Calendar.getInstance().timeInMillis - vehicle.checkInTime)
-            onSuccess(parkingSpace.calculateFee(), vehicle.plate)
-            val totalEarnings = vehiclesRetiresAndEarnings.first + parkingSpace.calculateFee()
+            val parkedTime = (Calendar.getInstance().timeInMillis - vehicle.checkInTime).toInt()
+            val parkingSpace = ParkingSpace(vehicle, parkedTime.toLong())
+            onSuccess(parkingSpace.calculateFee(parkedTime, vehicle.Type, vehicle.discountCard != null), vehicle.plate)
+            val totalEarnings = vehiclesRetiresAndEarnings.first + parkingSpace.calculateFee(parkedTime, vehicle.Type, vehicle.discountCard != null)
             val carsRetired = vehiclesRetiresAndEarnings.second + 1
             vehiclesRetiresAndEarnings = Pair(totalEarnings, carsRetired)
         } else onError()
